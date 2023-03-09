@@ -13,26 +13,19 @@ library(gt)
 # Load multiple years of play-by-play (pbp) data
 pbp <- load_pbp(2021:2022)
 
-# Check how many rows are in the data
 nrow(pbp)
-
-# Take a look at the first 5 rows of the data
-# If you want to change your pipe to |> go to "Global Options" and then "Code"
-pbp |> head()
-
-# Take a look at all the columns
 names(pbp)
 
-# Select just a couple columns to look at 
+# Looking at select columns
 pbp |> select(posteam, defteam, down, ydstogo, play_type, yards_gained)
 
-# Let's just get runs and passes
+# Getting runs and passes
 pbp_rp <- pbp |> 
   filter(pass == 1 | rush == 1) |> 
   # and get plays that have epa
   filter(!is.na(epa))
 
-# Now we can see that our dataset got smaller
+# Dataset got smaller
 nrow(pbp_rp)
 
 # Who was the Bills best rusher last season?
@@ -98,7 +91,7 @@ total_eff |>
 # Saving the plot
 ggsave('pass-rush-epa-21.png', width = 14, height = 10, dpi = "retina")
 
-# Now let's make a table to see how quarterback aggressiveness has changed
+# Quarterback aggressiveness changing over time
 agg_21 <- pbp |> 
   mutate(yards_past_sticks = air_yards - ydstogo) |> 
   filter(season == 2021, down %in% c(3, 4), !is.na(passer_player_id)) |>
