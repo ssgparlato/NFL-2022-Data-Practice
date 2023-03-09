@@ -10,7 +10,7 @@ library(nflfastR)
 library(ggimage)
 library(gt)
 
-# Load multiple years of pbp data
+# Load multiple years of play-by-play (pbp) data
 pbp <- load_pbp(2021:2022)
 
 # Check how many rows are in the data
