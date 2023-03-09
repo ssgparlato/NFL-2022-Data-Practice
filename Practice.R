@@ -35,18 +35,18 @@ pbp_rp <- pbp |>
 # Now we can see that our dataset got smaller
 nrow(pbp_rp)
 
-# Who was the Lions best rusher last season?
+# Who was the Bills best rusher last season?
 pbp_rp |> 
-  filter(posteam == "DET", rush == 1, !is.na(rusher_player_name)) |> 
+  filter(posteam == "BUF", rush == 1, !is.na(rusher_player_name)) |> 
   group_by(rusher_player_name) |> 
   summarize(rushes = n(),
             epa_rush = mean(epa)) |> 
   filter(rushes >= 10) |> 
   arrange(-epa_rush)
 
-# Who was the Dolphins best quarterback last season?
+# Who was the Jets best quarterback last season?
 pbp_rp |> 
-  filter(posteam == "CAR", !is.na(id)) |> 
+  filter(posteam == "NYJ", !is.na(id)) |> 
   group_by(id) |> 
   summarize(name = first(name),
             plays = n(),
