@@ -19,7 +19,7 @@ fourth_downs |>
 fourth_downs <- fourth_downs |> 
   mutate(went_for_it = ifelse(play_type %in% c("pass", "run"), 1, 0))
 
-# Which variables correlate with going for it on fourth down
+# Variables that correlate with going for it on fourth down
 fourth_downs |> 
   group_by(ydstogo) |> 
   summarize(count = n(), 
